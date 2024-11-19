@@ -12,3 +12,22 @@ module.exports = {
         },
     },
 };
+
+//Update for Ropsten network
+const HDWalletProvider = require("@truffle/hdwallet-provider");
+require("dotenv").config();
+
+module.exports = {
+    networks: {
+        ropsten: {
+            provider: () => new HDWalletProvider(process.env.PRIVATE_KEY, `https://ropsten.infura.io/v3/${process.env.INFURA_PROJECT_ID}`),
+            network_id: 3,
+            gas: 5500000,
+        },
+    },
+    compilers: {
+        solc: {
+            version: "0.8.0",
+        },
+    },
+};
